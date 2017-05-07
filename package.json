@@ -4,6 +4,7 @@
   "description": "Stream that pushes a value when it is changed with set.",
   "main": "index.js",
   "scripts": {
+    "build": "./node_modules/typescript/bin/tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
