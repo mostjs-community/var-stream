@@ -1,0 +1,22 @@
+{
+  "name": "@fugality/from-value",
+  "version": "1.0.0",
+  "description": "Stream that pushes a value when it is changed with set.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babili": "0.0.12",
+    "mocha": "^3.3.0",
+    "northbrook": "^4.6.3",
+    "typescript": "^2.3.2"
+  },
+  "dependencies": {
+    "@most/multicast": "^1.2.5",
+    "@most/prelude": "^1.6.0",
+    "most": "^1.3.0"
+  }
+}
