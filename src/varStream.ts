@@ -7,13 +7,12 @@ export class VarStream <T> {
   private _stream: Stream<T>
 
   constructor (initialValue?: T) {
+    this._source = new MulticastSource<T>(never().source)
+    this._stream = new Stream<T>(this._source)
     if (initialValue) {
       this._value  = initialValue
-      this._source = new MulticastSource<T>(just(this._value).source)
-    } else {
-      this._source = new MulticastSource<T>(never().source)
+      defaultScheduler.asap(PropagateTask.event(this._value, this._source))
     }
-    this._stream = new Stream<T>(this._source)
   }
 
   public stream () {

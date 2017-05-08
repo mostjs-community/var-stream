@@ -5,12 +5,24 @@
   "main": "index.js",
   "scripts": {
     "build": "./node_modules/typescript/bin/tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --require babel-polyfill --compilers js:babel-register -R dot --watch --bail --recursive",
+    "test-verbose": "mocha --require babel-polyfill --compilers js:babel-register --watch --recursive"
   },
   "author": "Tim Smith",
   "license": "MIT",
   "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.4.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.2.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "chai": "^3.5.0",
+    "eslint": "^3.17.1",
     "mocha": "^3.3.0",
+    "most-test": "^1.3.0",
     "typescript": "^2.3.2"
   },
   "dependencies": {
