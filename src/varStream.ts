@@ -1,10 +1,11 @@
-import { Stream, Sink, just, never, defaultScheduler, PropagateTask } from 'most';
+import { Stream, Sink, never, defaultScheduler, PropagateTask } from 'most';
 import { MulticastSource } from '@most/multicast';
 
 export class VarStream <T> {
   private _value: T = null
   private _source: MulticastSource<T>
   private _stream: Stream<T>
+  private _running: Boolean = true
 
   constructor (initialValue?: T) {
     this._source = new MulticastSource<T>(never().source)
@@ -15,19 +16,22 @@ export class VarStream <T> {
     }
   }
 
-  public stream () {
-    return this._stream
+  public get () {
+    return this._value
   }
 
   public set (value: T) {
-    if ( value != this._value) {
+    if ( this._running && value != this._value ) {
       this._value = value
       defaultScheduler.asap(PropagateTask.event(this._value, this._source))
+      return value
+    } else {
+      return null
     }
   }
 
-  public get () {
-    return this._value
+  public stream () {
+    return this._stream
   }
 
   public error <Err extends Error> (err: Err) {
@@ -35,6 +39,10 @@ export class VarStream <T> {
   }
 
   public end () {
+    // Suppress get and set
+    this._value = null
+    this._running = false
+    // Terminate the stream
     defaultScheduler.asap(PropagateTask.end(null, this._source))
   }
 

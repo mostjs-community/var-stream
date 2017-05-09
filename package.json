@@ -1,8 +1,8 @@
 {
   "name": "@fugality/var-stream",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Stream that pushes a value when it is changed with set.",
-  "main": "index.js",
+  "main": "./dist/VarStream.js",
   "scripts": {
     "build": "./node_modules/typescript/bin/tsc",
     "test": "mocha --require babel-polyfill --compilers js:babel-register -R dot --watch --bail --recursive",

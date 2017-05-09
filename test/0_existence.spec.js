@@ -17,7 +17,7 @@ describe('The VarStream class', function() {
     foo.should.be.an.instanceof(VarStream)
   })
 
-  it('should construct with one argument', function() {
+  it('should construct with a argument', function() {
     const foo = new VarStream("foo")
     foo.should.be.an.instanceof(VarStream)
   })
