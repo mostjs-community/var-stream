@@ -16,7 +16,11 @@ export class VarStream <T> {
     }
   }
 
-  public get () {
+  public running (): Boolean {
+    return this._running == true
+  }
+
+  public get (): T {
     return this._value
   }
 
@@ -30,8 +34,8 @@ export class VarStream <T> {
     }
   }
 
-  public stream () {
-    return this._stream
+  public stream (): Stream<T> {
+    return this._stream.startWith(this._value).filter( x => x != null )   // send current value, skip nulls
   }
 
   public error <Err extends Error> (err: Err) {

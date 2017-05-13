@@ -22,4 +22,9 @@ describe('The VarStream class', function() {
     foo.should.be.an.instanceof(VarStream)
   })
 
+  it('should return true when running() is called after startup', () => {
+    const vs = new VarStream()
+    assert.equal(vs.running(), true)
+  })
+
 })

@@ -13,6 +13,9 @@ var VarStream = (function () {
             most_1.defaultScheduler.asap(most_1.PropagateTask.event(this._value, this._source));
         }
     }
+    VarStream.prototype.running = function () {
+        return this._running == true;
+    };
     VarStream.prototype.get = function () {
         return this._value;
     };
@@ -27,7 +30,7 @@ var VarStream = (function () {
         }
     };
     VarStream.prototype.stream = function () {
-        return this._stream;
+        return this._stream.startWith(this._value).filter(function (x) { return x != null; }); // send current value, skip nulls
     };
     VarStream.prototype.error = function (err) {
         most_1.defaultScheduler.asap(most_1.PropagateTask.error(err, this._source));

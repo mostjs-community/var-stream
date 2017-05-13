@@ -16,8 +16,15 @@ describe('The VarStream.end method', () => {
     assert.isFunction(vs.end)
   })
 
+  it('should cause running to return false', () => {
+    const vs = new VarStream()
+    vs.set("foo")
+    vs.end()
+    assert.equal(vs.running(), false)
+  })
+
   it('should cause get to return null', () => {
-    const vs = new VarStream() 
+    const vs = new VarStream()
     vs.set("foo")
     vs.end()
     assert.equal(vs.get(), null)
@@ -30,19 +37,21 @@ describe('The VarStream.end method', () => {
     assert.equal(vs.set("bar"), null)
   })
 
-  it('should cause the stream to terminate', () => {
+  it('should cause the stream to terminate', (done) => {
     const vs = new VarStream()
-    const st = vs.stream()
 
-    st.continueWith((e) => {
-      return just(2)
-    }).observe((x) => {
-      assert.equal(x, 2)
-    })
+    const acc = []
+    vs.stream().observe((x) => acc.push(x))
 
-    vs.end()
     vs.set("foo")
+    vs.end()
+    vs.set("bar")
+    vs.set("bing")
 
+    setTimeout( () => {
+      assert.deepEqual(acc, ["foo"])
+      done()
+    }, 10 )
   })
 
 
