@@ -16,7 +16,7 @@ export class VarStream <T> {
     }
   }
 
-  public running (): Boolean {
+  public isRunning (): Boolean {
     return this._running == true
   }
 

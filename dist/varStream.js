@@ -13,7 +13,7 @@ var VarStream = (function () {
             most_1.defaultScheduler.asap(most_1.PropagateTask.event(this._value, this._source));
         }
     }
-    VarStream.prototype.running = function () {
+    VarStream.prototype.isRunning = function () {
         return this._running == true;
     };
     VarStream.prototype.get = function () {

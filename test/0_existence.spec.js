@@ -24,7 +24,7 @@ describe('The VarStream class', function() {
 
   it('should return true when running() is called after startup', () => {
     const vs = new VarStream()
-    assert.equal(vs.running(), true)
+    assert.equal(vs.isRunning(), true)
   })
 
 })

@@ -1,5 +1,4 @@
 import { just }            from 'most'
-import { run }             from 'most-test'
 
 import { VarStream }       from '../dist/varStream.js'
 
@@ -20,7 +19,7 @@ describe('The VarStream.end method', () => {
     const vs = new VarStream()
     vs.set("foo")
     vs.end()
-    assert.equal(vs.running(), false)
+    assert.equal(vs.isRunning(), false)
   })
 
   it('should cause get to return null', () => {

@@ -1,5 +1,4 @@
 import { just }            from 'most'
-import { run }             from 'most-test'
 
 import { VarStream }       from '../dist/varStream.js'
 
