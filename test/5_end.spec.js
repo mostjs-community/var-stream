@@ -40,7 +40,11 @@ describe('The VarStream.end method', () => {
     const vs = new VarStream()
 
     const acc = []
-    vs.stream().observe((x) => acc.push(x))
+    var   stopped = false
+
+    vs.stream()
+      .observe((x) => acc.push(x))
+      .then( () => stopped = true )
 
     vs.set("foo")
     vs.end()
@@ -49,6 +53,7 @@ describe('The VarStream.end method', () => {
 
     setTimeout( () => {
       assert.deepEqual(acc, ["foo"])
+      assert.equal(stopped, true)
       done()
     }, 10 )
   })

@@ -15,16 +15,14 @@ describe('The VarStream.error method', () => {
     assert.isFunction(vs.error)
   })
 
-  it('should cause the stream to throw an error', () => {
+  it('should cause the stream to throw an error', (done) => {
     const vs = new VarStream()
-    const st = vs.stream()
-
-    st.recoverWith((e) => {
-      assert.equal(e.message,"foo")
-      return just(2)
-    }).observe((x) => {
-      assert.equal(x, 2)
-    })
+    vs.stream()
+      .drain()
+      .catch( e => {
+        assert.equal(e.message,"foo")
+        done()
+      })
 
     vs.error(new Error("foo"))
   })
