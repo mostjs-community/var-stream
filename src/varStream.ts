@@ -2,7 +2,7 @@ import { Stream, Sink, never, defaultScheduler, PropagateTask } from 'most';
 import { MulticastSource } from '@most/multicast';
 
 export class VarStream <T> {
-  private _value: T = null
+  private _value: T
   private _source: MulticastSource<T>
   private _stream: Stream<T>
   private _running: Boolean = true
@@ -30,12 +30,12 @@ export class VarStream <T> {
       defaultScheduler.asap(PropagateTask.event(this._value, this._source))
       return value
     } else {
-      return null
+      return undefined
     }
   }
 
   public stream (): Stream<T> {
-    return this._stream.startWith(this._value).filter( x => x != null )   // send current value, skip nulls
+    return this._stream.startWith(this._value).filter( x => x != undefined )   // send current value, skip unknowns
   }
 
   public error <Err extends Error> (err: Err) {

@@ -1,6 +1,6 @@
 {
   "name": "@fugality/var-stream",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Stream that pushes a value when it is changed with set.",
   "main": "./dist/VarStream.js",
   "scripts": {

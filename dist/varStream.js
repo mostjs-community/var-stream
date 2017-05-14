@@ -4,7 +4,6 @@ var most_1 = require("most");
 var multicast_1 = require("@most/multicast");
 var VarStream = (function () {
     function VarStream(initialValue) {
-        this._value = null;
         this._running = true;
         this._source = new multicast_1.MulticastSource(most_1.never().source);
         this._stream = new most_1.Stream(this._source);
@@ -26,11 +25,11 @@ var VarStream = (function () {
             return value;
         }
         else {
-            return null;
+            return undefined;
         }
     };
     VarStream.prototype.stream = function () {
-        return this._stream.startWith(this._value).filter(function (x) { return x != null; }); // send current value, skip nulls
+        return this._stream.startWith(this._value).filter(function (x) { return x != undefined; }); // send current value, skip unknowns
     };
     VarStream.prototype.error = function (err) {
         most_1.defaultScheduler.asap(most_1.PropagateTask.error(err, this._source));

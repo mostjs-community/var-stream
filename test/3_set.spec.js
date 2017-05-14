@@ -26,9 +26,14 @@ describe('The VarStream.set method', () => {
     assert.equal(vs.set("bar"), "bar")
   })
 
-  it('should return null if no change occured', () => {
+  it('should return undefined if no change occured', () => {
     const vs = new VarStream("foo")
-    assert.equal(vs.set("foo"), null)
+    assert.equal(vs.set("foo"), undefined)
+  })
+
+  it('should return null if the value is changed to null', () => {
+    const vs = new VarStream("foo")
+    assert.equal(vs.set(null), null)
   })
 
   it('should cause the stream to emit the new value if it is different', (done) => {
