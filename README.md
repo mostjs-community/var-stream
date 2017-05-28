@@ -7,7 +7,7 @@ Useful on the boundary between a declarative (get, set) code base and a reactive
 
 ## Use
 
-Refer to the test classes for the ground truth.  Summarizing:
+Refer to the test specs for the ground truth.  Summarizing:
 
 ```javascript
 
