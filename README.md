@@ -1,6 +1,8 @@
 # var-stream
 Stateful interface object that stores and reactively streams a variable. 
 
+Comments welcome.  I'm new to typescript.
+
 ## Purpose
 
 Useful on the boundary between a declarative (get, set) code base and a reactive (streaming) code base.  Uses Most.js for streams. 
