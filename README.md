@@ -5,7 +5,7 @@ Comments welcome.  I'm new to typescript.
 
 ## Purpose
 
-Useful on the boundary between a declarative (get, set) code base and a reactive (streaming) code base.  Uses Most.js for streams. 
+Useful on the boundary between a imperative (get, set) code base and a reactive (streaming) code base.  Uses Most.js for streams. 
 
 ## Use
 
